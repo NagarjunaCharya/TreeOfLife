@@ -1,4 +1,4 @@
-# TreeOfLife (PlantDoc)
+# TreeOfLife (Vision AI)
 
 TreeOfLife is an AI-powered Android application designed to help users identify and care for their plants. Utilizing the Google Gemini API, it provides intelligent insights into plant health, care instructions, and detailed plant information.
 

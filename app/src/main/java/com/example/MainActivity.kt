@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                val sharedPrefs = getSharedPreferences("plantdoc_prefs", android.content.Context.MODE_PRIVATE)
+                val sharedPrefs = getSharedPreferences("visionai_prefs", android.content.Context.MODE_PRIVATE)
                 return MainViewModel(repository, sharedPrefs) as T
             }
         }

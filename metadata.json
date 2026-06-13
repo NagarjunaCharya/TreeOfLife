@@ -1,5 +1,5 @@
 {
-  "name": "PlantDoc",
+  "name": "Vision AI",
   "description": "Plant disease prediction with real-time AI and offline history logging.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

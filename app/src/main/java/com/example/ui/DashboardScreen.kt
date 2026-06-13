@@ -46,7 +46,7 @@ fun DashboardScreen(viewModel: MainViewModel) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("PlantDoc History") },
+                title = { Text("Vision AI History") },
                 actions = {
                     IconButton(onClick = { showSettingsDialog = true }) {
                         Icon(Icons.Default.Settings, contentDescription = "Settings")
