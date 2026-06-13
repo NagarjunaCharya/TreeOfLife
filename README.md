@@ -1,45 +1,101 @@
-# TreeOfLife (Vision AI)
+# 🌳 TreeOfLife — AI-Powered Crop Disease Diagnosis
 
-TreeOfLife is an AI-powered Android application designed to help users identify and care for their plants. Utilizing the Google Gemini API, it provides intelligent insights into plant health, care instructions, and detailed plant information.
+TreeOfLife is a **dual-verification crop disease detection system** that combines **Vision AI** (phenotype analysis) with **DNABERT-2** (genotype analysis) for accurate, AI-powered agricultural diagnostics.
 
-## Features
+## Architecture
 
-- **AI Plant Analysis**: Leverage the power of the Gemini API to analyze plants and receive intelligent care suggestions and information.
-- **Local Plant Database**: Save your plants locally using a Room Database, allowing you to keep track of your personal garden.
-- **Modern UI**: Built entirely with Jetpack Compose for a sleek, reactive, and modern user experience.
-- **Local Storage**: Uses SharedPreferences and Room Database to keep user preferences and plant data secure and accessible offline.
+```
+Farmer → Selects Crop → Uploads Photo / DNA Sequence
+                              │
+               ┌──────────────┴──────────────┐
+               ▼                              ▼
+         VISION AI                       DNABERT-2
+        (Phenotype)                     (Genotype)
+     Leaf photo analysis           DNA sequence analysis
+               │                              │
+     "Leaf spots detected →         "Pathogen DNA found →
+      looks like Blast"              confirms Blast"
+               │                              │
+               └──────────────┬──────────────┘
+                              ▼
+                    ✅ DOUBLE CONFIRMED
+                   "Rice Blast — 98%"
+```
 
-## Tech Stack
+## Modules
 
-- **Kotlin**
-- **Jetpack Compose** (UI)
-- **Room Database** (Local Storage)
-- **ViewModel** (State Management)
-- **Gemini API** (AI Integration)
+### 📱 Vision AI (Android App)
+> **Path:** [`app/`](app/)
 
-## Setup Instructions
+AI-powered Android application for plant disease identification using the Gemini API.
 
-### Prerequisites
-- [Android Studio](https://developer.android.com/studio) (Latest Version)
-- A valid [Google Gemini API Key](https://aistudio.google.com/)
+- **AI Plant Analysis** — Analyze plant photos for disease detection
+- **Local Plant Database** — Save plants locally using Room Database
+- **Modern UI** — Built with Jetpack Compose
 
-### Running Locally
+**Tech Stack:** Kotlin, Jetpack Compose, Room Database, Gemini API
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/NagarjunaCharya/TreeOfLife.git
-   ```
-2. **Open the project in Android Studio.**
-3. **Configure your API Key:**
-   - Create a file named `.env` in the root project directory.
-   - Add your Gemini API key in the file:
-     ```
-     GEMINI_API_KEY=your_api_key_here
-     ```
-   - *(See `.env.example` for reference)*.
-4. **Sync Gradle:** Allow Android Studio to download dependencies and sync the project.
-5. **Run the App:** Select your emulator or physical device and click **Run**.
+### 🧬 DNABERT-2 (Genotype Classifier)
+> **Path:** [`dnabert/`](dnabert/)
+
+Crop species classification from raw DNA sequences using the DNABERT-2 foundation model.
+
+- **5 Crop Species** — Rice, Wheat, Ragi, Tomato, Rose
+- **117M Parameter Model** — Fine-tuned DNABERT-2
+- **732K+ Training Sequences** — From NCBI GenBank
+- **Sample Datasets Included** — 100 sequences per crop for quick testing
+
+**Tech Stack:** Python, PyTorch, Transformers, DNABERT-2
+
+## Quick Start
+
+### Vision AI (Android)
+```bash
+# Open in Android Studio
+# Add your Gemini API key to .env
+# Build and run
+```
+
+### DNABERT-2 (Python)
+```bash
+cd dnabert/
+pip install -r requirements.txt
+
+# Download model from HuggingFace
+# Train: python train_epoch_1.py (through train_epoch_5.py)
+# Predict: python predict.py --sequence "ATCGATCG..."
+```
+
+See [`dnabert/README.md`](dnabert/README.md) for detailed instructions.
+
+## Supported Crops
+
+| Crop | Vision AI | DNABERT-2 |
+|------|-----------|-----------|
+| 🌾 Rice | ✅ Disease detection | ✅ DNA classification |
+| 🌿 Wheat | ✅ Disease detection | ✅ DNA classification |
+| 🌱 Ragi | ✅ Disease detection | ✅ DNA classification |
+| 🍅 Tomato | ✅ Disease detection | ✅ DNA classification |
+| 🌹 Rose | ✅ Disease detection | ✅ DNA classification |
+
+## Project Structure
+
+```
+TreeOfLife/
+├── README.md                  ← You are here
+├── app/                       ← Android Vision AI app
+│   └── src/                   ← Kotlin source code
+├── dnabert/                   ← DNABERT-2 genotype module
+│   ├── README.md              ← DNABERT documentation
+│   ├── train_epoch_*.py       ← Training scripts (5 epochs)
+│   ├── predict.py             ← Inference script
+│   ├── requirements.txt       ← Python dependencies
+│   └── datasets/              ← Sample + full datasets
+├── build.gradle.kts           ← Android build config
+├── settings.gradle.kts        ← Android settings
+└── gradle/                    ← Gradle wrapper
+```
 
 ## License
 
-This project is open-source and available under the [MIT License](LICENSE).
+This project is developed as part of a Student Internship Program (SIP).

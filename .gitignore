@@ -16,3 +16,18 @@
 local.properties
 .env
 debug.keystore
+
+# DNABERT-2 large files (download separately)
+dnabert/DNABERT-2-117M/
+dnabert/finetuned_model/
+dnabert/datasets/rice/
+dnabert/datasets/wheat/
+dnabert/datasets/ragi/
+dnabert/datasets/tomato/
+dnabert/datasets/rose/
+dnabert/datasets/raw/
+dnabert/__pycache__/
+*.pt
+*.bin
+*.safetensors
+*.pyc
