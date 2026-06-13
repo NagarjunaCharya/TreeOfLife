@@ -1,21 +1,45 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# TreeOfLife (PlantDoc)
 
-# Run and deploy your AI Studio app
+TreeOfLife is an AI-powered Android application designed to help users identify and care for their plants. Utilizing the Google Gemini API, it provides intelligent insights into plant health, care instructions, and detailed plant information.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/ccf07f2b-8dd7-4bcb-b48c-51a435d4a967
+- **AI Plant Analysis**: Leverage the power of the Gemini API to analyze plants and receive intelligent care suggestions and information.
+- **Local Plant Database**: Save your plants locally using a Room Database, allowing you to keep track of your personal garden.
+- **Modern UI**: Built entirely with Jetpack Compose for a sleek, reactive, and modern user experience.
+- **Local Storage**: Uses SharedPreferences and Room Database to keep user preferences and plant data secure and accessible offline.
 
-## Run Locally
+## Tech Stack
 
-**Prerequisites:**  [Android Studio](https://developer.android.com/studio)
+- **Kotlin**
+- **Jetpack Compose** (UI)
+- **Room Database** (Local Storage)
+- **ViewModel** (State Management)
+- **Gemini API** (AI Integration)
 
+## Setup Instructions
 
-1. Open Android Studio
-2. Select **Open** and choose the directory containing this project
-3. Allow Android Studio to fix any incompatibilities as it imports the project.
-4. Create a file named `.env` in the project directory and set `GEMINI_API_KEY` in that file to your Gemini API key (see `.env.example` for an example)
-5. Remove this line from the app's `build.gradle.kts` file: `signingConfig = signingConfigs.getByName("debugConfig")`
-6. Run the app on an emulator or physical device
+### Prerequisites
+- [Android Studio](https://developer.android.com/studio) (Latest Version)
+- A valid [Google Gemini API Key](https://aistudio.google.com/)
+
+### Running Locally
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/NagarjunaCharya/TreeOfLife.git
+   ```
+2. **Open the project in Android Studio.**
+3. **Configure your API Key:**
+   - Create a file named `.env` in the root project directory.
+   - Add your Gemini API key in the file:
+     ```
+     GEMINI_API_KEY=your_api_key_here
+     ```
+   - *(See `.env.example` for reference)*.
+4. **Sync Gradle:** Allow Android Studio to download dependencies and sync the project.
+5. **Run the App:** Select your emulator or physical device and click **Run**.
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
